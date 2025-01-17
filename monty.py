@@ -8,7 +8,7 @@ import numpy as np
 from numpy.lib._arraysetops_impl import UniqueCountsResult
 
 def monty_round(options: tuple) -> np.ndarray:
-    """Run a round of the Monty Hall problem, given a tuple of 3 animals behind the doors."""
+    """Run a round of the Monty Hall problem, given a tuple of animals behind the doors."""
     # shuffle the doors
     doors = np.random.permutation(options)
     # We always pick the first door, doesn't matter for the simulation
@@ -17,7 +17,7 @@ def monty_round(options: tuple) -> np.ndarray:
     open_index = np.where(rest != "car")[0][0]
     open_door = rest[open_index]
     # Remove the open door. We are left with one closed door. That's the switch pick
-    switch_pick = np.delete(rest, open_index)
+    switch_pick = np.delete(rest, open_index)[0]
     return np.hstack((initial_pick, switch_pick, open_door))
 
 
